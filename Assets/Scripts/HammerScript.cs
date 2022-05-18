@@ -46,6 +46,7 @@ public class HammerScript : MonoBehaviour
         moving = true;
         up = false;
     }
+	
     public void HammerUp()
     {
         up = true;

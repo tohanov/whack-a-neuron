@@ -1,3 +1,11 @@
 # .gitignore
 
-obj
+*
+
+!Assets
+!Assets/*
+
+!.gitignore
+!Assembly-CSharp.csproj
+!New Unity Project.sln
+!README.md

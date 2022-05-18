@@ -9,6 +9,27 @@ public class BoardScript : MonoBehaviour
     public HammerScript HammerRight, HammerLeft;
     public HammerHolderScript hammerHolder;
     public int N = 2;
+
+	private KeyCode[] keyCodes = {
+		KeyCode.Alpha1,
+		KeyCode.Alpha2,
+		KeyCode.Alpha3,
+		KeyCode.Alpha4,
+		KeyCode.Alpha5,
+		KeyCode.Alpha6,
+		KeyCode.Alpha7,
+		KeyCode.Alpha8,
+		KeyCode.Alpha9,
+		KeyCode.Keypad0,
+		KeyCode.Keypad1,
+		KeyCode.Keypad2,
+		KeyCode.Keypad3,
+		KeyCode.Keypad4,
+		KeyCode.Keypad5,
+		KeyCode.Keypad6
+	};
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,14 +52,19 @@ public class BoardScript : MonoBehaviour
             }
         }
         
-    }   
+    }
+
 
     // Update is called once per frame
     void Update()
     {
-        bool mb = Input.GetKeyDown("space");
-        if (mb)
-            hammerHolder.MoveHammer(tiles[0]);
+		// limited by existing tiles number so won't get out of bounds error
+        for (int i = 0; i < N*N; ++i) {
+			if (Input.GetKeyDown(keyCodes[i])) {
+            	hammerHolder.MoveHammer(tiles[i]);
+				break;
+			}
+		}
     }
 
     
