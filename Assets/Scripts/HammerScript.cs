@@ -10,7 +10,8 @@ public class HammerScript : MonoBehaviour
     private bool moving = false;
     private float n = 0;
     private int count = 0;
-    private Vector3 initial_pos = new Vector3(0, 0, 0);
+    private Vector3 initial_pos = new Vector3(0,25,3);
+	private Vector3 hitVector = -1 * new Vector3(0,10,3);
     
     // Start is called before the first frame update
     void Start()
@@ -22,7 +23,6 @@ public class HammerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
         if (!up && count < n)
         {
 
@@ -31,6 +31,7 @@ public class HammerScript : MonoBehaviour
             if (count >= n)
                 HammerUp();
         }
+
         if (up && count > 0)
         {
             transform.position -= move_speed*translate_vector;
@@ -38,9 +39,13 @@ public class HammerScript : MonoBehaviour
             if (count == 0)
                 moving = false;
         }
+
+
     }
 
-    
+    private void OnTriggerEnter(Collider other){
+		// Debug.Log("C1");
+	}
     public void HammerDown()
     {
         moving = true;

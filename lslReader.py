@@ -41,7 +41,7 @@ def startSequence(inlet, file):
 		draw_texture(sequence[i], 0, 0, WHITE)
 		end_drawing()
 
-		readingTime2 = read_signal(namedInstructions[sequence[i]], inlet, file)
+		readingTime2 = read_signal(str(i) + "," + namedInstructions[sequence[i]], inlet, file)
 
 		if (readingTime2 - readingTime1 >= timestampDuration):
 			i += 1
@@ -85,11 +85,11 @@ def main():
 		exit(0)
 	
 
-	startSequence(inlet, file)
 
 	# print(outputList)
 	
 	file = open(outputFile,"w")
+	startSequence(inlet, file)
 
 	for record in outputList:
 		file.write(
